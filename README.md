@@ -1,24 +1,30 @@
-# vue-blog
+# Vuejs Blog
+
+simple Vuejs blog using with fake api endpoint.
+
+- vue router.
+- vuex.
+- json-server.
+- json web token.
+- vuelidate.
+- vue-input-tag.
+- nprogress.
+- nodemon for nodejs server.
+- axios.
+- concurrently.
 
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+     npm install
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Compiles and hot-reloads for development
 
-### Lints and fixes files
-```
-npm run lint
-```
+    npm run start
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Compiles and minifies for production
+
+    npm run build
+
+## Lints and fixes files
+
+    npm run lint
