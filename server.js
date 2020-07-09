@@ -15,18 +15,6 @@ app.get('/', (req, res) => {
   })
 })
 
-// app.get('/create', verifyToken, (req, res) => {
-//   jwt.verify(req.token, 'the_secret_key', err => {
-//     if (err) {
-//       res.sendStatus(401)
-//     } else {
-//       res.json({
-//         events
-//       })
-//     }
-//   })
-// })
-
 //REGISTER ENDPOINT
 app.post('/register', (req, res) => {
   if (req.body) {
