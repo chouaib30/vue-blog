@@ -1,5 +1,5 @@
 import axios from 'axios'
-import apiServices from '@/api/apiServices.js'
+import apiAuthServices from '@/api/apiAuthServices.js'
 
 export const namespaced = true
 
@@ -20,19 +20,28 @@ export const mutations = {
 
 export const actions = {
   register({ commit }, formData) {
-    return apiServices.userRegister(formData).then(({ data }) => {
+    return apiAuthServices.userRegister(formData).then(({ data }) => {
       commit('SET_USER_DATA', data)
       console.log(data)
     })
   },
 
   login({ commit }, formData) {
-    return apiServices.userLogin(formData).then(({ data }) => {
+    return apiAuthServices.userLogin(formData).then(({ data }) => {
       commit('SET_USER_DATA', data)
     })
   },
 
   logout({ commit }) {
     commit('CLEAR_USER_DATA')
+  }
+}
+
+export const getters = {
+  checkUser: state => {
+    return state.user
+  },
+  getUsername: state => {
+    return state.user.name
   }
 }

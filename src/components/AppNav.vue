@@ -5,22 +5,30 @@
         <router-link :to="{ name: 'blog-list' }">Home</router-link>
       </nav>
       <nav class="nav-right">
-        <router-link v-if="!user" :to="{ name: 'login' }" tag="button" class="btn">Login</router-link>
+        <router-link
+          v-if="!checkUser"
+          :to="{ name: 'login' }"
+          tag="button"
+          class="btn"
+          >Login</router-link
+        >
         <template v-else>
           <p style="color: #fff">
             Welcome:
-            <b>{{ user.name }}</b>
+            <b>{{ getUsername }}</b>
           </p>
           <button class="btn" @click="logout">Logout</button>
         </template>
-        <router-link tag="button" :to="{ name: 'post-create' }" class="btn">Create post</router-link>
+        <router-link tag="button" :to="{ name: 'post-create' }" class="btn"
+          >Create post</router-link
+        >
       </nav>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   methods: {
     logout() {
@@ -29,6 +37,6 @@ export default {
       })
     }
   },
-  computed: mapState('authentication', ['user'])
+  computed: mapGetters('authentication', ['checkUser', 'getUsername'])
 }
 </script>

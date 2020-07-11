@@ -6,13 +6,13 @@ export const state = {
 
 let nextId = 1
 export const mutations = {
-  ADD(state, notification) {
+  ADD_NOTIFICATION(state, notification) {
     state.notifications.push({
       ...notification,
       id: nextId++
     })
   },
-  DELETE(state, notificationToRemove) {
+  DELETE_NOTIFICATION(state, notificationToRemove) {
     state.notifications = state.notifications.filter(
       notification => notification.id !== notificationToRemove.id
     )
@@ -21,9 +21,9 @@ export const mutations = {
 
 export const actions = {
   addNotification({ commit }, notification) {
-    commit("ADD", notification)
+    commit('ADD_NOTIFICATION', notification)
   },
   removeNotification({ commit }, notificationToRemove) {
-    commit("DELETE", notificationToRemove)
+    commit('DELETE_NOTIFICATION', notificationToRemove)
   }
 }

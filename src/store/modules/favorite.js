@@ -10,7 +10,6 @@ export const mutations = {
     if (state.favoritePosts.findIndex(post => post === favoritePost) === -1) {
       state.favoritePosts.push(favoritePost)
       state.favoritePost = favoritePost
-      //localStorage.setItem('post', JSON.stringify(favoritePost))
     }
   },
   REMOVE_FAVORITE_POST(state, postToRemove) {
