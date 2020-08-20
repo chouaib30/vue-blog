@@ -1,13 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BlogsList from '../views/BlogsList.vue'
-import BlogShow from '../views/BlogShow.vue'
-import BlogCreate from '../views/BlogCreate.vue'
-import FavoritePosts from '../views/FavoritePosts.vue'
-import LoginUser from '../views/LoginUser.vue'
-import RegisterUser from '../views/RegisterUser.vue'
-import NotFound from '../views/NotFound.vue'
-import NetworkIssue from '../views/NetworkIssue.vue'
 import store from '@/store/index.js'
 
 Vue.use(VueRouter)
@@ -21,7 +14,8 @@ const routes = [
   {
     path: '/post/:id',
     name: 'post-show',
-    component: BlogShow,
+    component: () =>
+      import(/* webpackChunkName : blogShow */ '../views/BlogShow.vue'),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
@@ -42,7 +36,8 @@ const routes = [
   {
     path: '/create',
     name: 'post-create',
-    component: BlogCreate,
+    component: () =>
+      import(/* webpackChunkName : blogCreate*/ '../views/BlogCreate.vue'),
     beforeEnter: (routeTo, routeFrom, next) => {
       const userData = localStorage.getItem('user')
       if (!userData) {
@@ -55,7 +50,10 @@ const routes = [
   {
     path: '/favorite',
     name: 'favorite-posts',
-    component: FavoritePosts,
+    component: () =>
+      import(
+        /* webpackChunkName : favoritePost */ '../views/FavoritePosts.vue'
+      ),
     beforeEnter: (routeTo, routeFrom, next) => {
       const userData = localStorage.getItem('user')
       if (!userData) {
@@ -68,22 +66,26 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginUser
+    component: () =>
+      import(/* webpackChunkName : favoritePost */ '../views/LoginUser.vue')
   },
   {
     path: '/register',
     name: 'register',
-    component: RegisterUser
+    component: () =>
+      import(/* webpackChunkName : register */ '../views/RegisterUser.vue')
   },
   {
     path: '/network-issue',
     name: 'network-issue',
-    component: NetworkIssue
+    component: () =>
+      import(/* webpackChunkName: networkIssue */ '../views/NetworkIssue.vue')
   },
   {
     path: '/404',
     name: '404',
-    component: NotFound,
+    component: () =>
+      import(/* webpackChunkName : notFound */ '../views/NotFound.vue'),
     props: true
   },
   {
